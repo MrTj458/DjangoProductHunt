@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% block content %}
+
+<form
+  class="d-flex justify-content-center"
+  method="POST"
+  action="{% url 'create' %}"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %}
+
+  <div class="card w-50 mt-3 shadow-sm">
+    <div class="card-title text-center">
+      <h1>Create Product</h1>
+      <hr />
+    </div>
+
+    {% if error %}
+    <div class="card-subtitle text-center alert-danger">
+      {{error}}
+    </div>
+    {% endif %}
+
+    <div class="card-body">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input class="form-control" type="text" name="title" />
+      </div>
+
+      <div class="form-group">
+        <label for="body">Body</label>
+        <textarea
+          class="form-control form"
+          name="body"
+          cols="30"
+          rows="10"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="url">URL</label>
+        <input class="form-control" type="text" name="url" />
+      </div>
+
+      <div class="form-group">
+        <label for="icon">Icon</label>
+        <input class="form-control" type="file" name="icon" />
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input class="form-control" type="file" name="image" />
+      </div>
+
+      <input
+        class="btn btn-primary m-auto w-100"
+        type="submit"
+        value="Add Product"
+      />
+    </div>
+  </div>
+</form>
+
+{% endblock %}
